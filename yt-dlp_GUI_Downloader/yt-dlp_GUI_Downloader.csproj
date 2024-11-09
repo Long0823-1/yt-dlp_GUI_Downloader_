@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+	<WindowsSdkPackageVersion>10.0.19041.34</WindowsSdkPackageVersion>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+    <RootNamespace>yt_dlp_GUI_Downloader</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Group 1.png" />
+    <None Remove="Images\OK.png" />
+    <None Remove="Images\shadow_mashimashi.png" />
+    <None Remove="Images\url.png" />
+    <None Remove="Run_shadow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="tool\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Prism.Core" Version="9.0.537" />
+    <PackageReference Include="Soenneker.Libraries.FFmpeg" Version="2.5.354" />
+    <PackageReference Include="Soenneker.Libraries.ffprobe" Version="2.1.334" />
+    <PackageReference Include="Soenneker.Libraries.ytdlp" Version="2.1.332" />
+    <PackageReference Include="WindowsAPICodePack" Version="8.0.6" />
+    <PackageReference Include="YoutubeDLSharp" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Group 1.png" />
+    <Resource Include="Images\OK.png" />
+    <Resource Include="Images\Run_shadow.png" />
+    <Resource Include="Images\shadow_mashimashi.png" />
+    <Resource Include="Images\url.png" />
+  </ItemGroup>
+
+</Project>

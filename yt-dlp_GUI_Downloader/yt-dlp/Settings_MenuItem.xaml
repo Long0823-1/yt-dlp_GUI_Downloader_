@@ -1,0 +1,131 @@
+﻿<Window
+    x:Class="yt_dlp_GUI_Downloader.yt_dlp.Settings_MenuItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:yt_dlp_GUI_Downloader.yt_dlp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="設定"
+    Width="380"
+    Height="650"
+    MinWidth="380"
+    MinHeight="650"
+    MaxWidth="380"
+    MaxHeight="650"
+    Topmost="True"
+    mc:Ignorable="d">
+    <Grid Margin="5">
+        <StackPanel>
+            <!--  Video Codec  -->
+            <TextBlock Margin="0,5" Text="指定する映像コーディック" />
+            <ComboBox x:Name="VideoCodecComboBox">
+                <ComboBoxItem Content="H264" />
+                <ComboBoxItem Content="H265" />
+                <ComboBoxItem Content="VP9" />
+                <ComboBoxItem Content="AV1" />
+            </ComboBox>
+
+            <!--  Resolution  -->
+            <TextBlock Margin="0,10,0,5" Text="解像度" />
+            <ComboBox Name="ResolutionComboBox">
+                <ComboBoxItem Content="256x144" />
+                <ComboBoxItem Content="426x240" />
+                <ComboBoxItem Content="640x360" />
+                <ComboBoxItem Content="854x480" />
+                <ComboBoxItem Content="1280x720" />
+                <ComboBoxItem Content="1920x1080" />
+                <ComboBoxItem Content="2560x1440" />
+                <ComboBoxItem Content="3840x2160" />
+                <ComboBoxItem Content="7680x4320" />
+            </ComboBox>
+
+            <!--  Audio Codec  -->
+            <TextBlock Margin="0,10,0,5" Text="指定するオーディオコーデック" />
+            <ComboBox Name="AudioCodecComboBox" IsEnabled="{Binding ElementName=AudioOnlyCheckBox, Path=IsChecked}">
+                <ComboBoxItem Content="MP3" />
+                <ComboBoxItem Content="AAC" />
+                <ComboBoxItem Content="FLAC" />
+            </ComboBox>
+
+            <!--  Download Audio Only  -->
+            <CheckBox
+                Name="AudioOnlyCheckBox"
+                Margin="0,10,0,5"
+                Content="音声のみをダウンロードする" />
+
+            <!--  Video Extension  -->
+            <TextBlock Margin="0,10,0,5" Text="映像拡張子" />
+            <ComboBox Name="VideoExtensionComboBox">
+                <ComboBoxItem Content="MKV" />
+                <ComboBoxItem Content="MP4" />
+                <ComboBoxItem Content="FLV" />
+            </ComboBox>
+
+            <!--  YouTube-specific Options  -->
+            <TextBlock
+                Margin="0,15,0,5"
+                FontWeight="Bold"
+                Text="YouTube限定の機能" />
+            <CheckBox Name="DescriptionCheckBox" Content="概要欄を保存する" />
+            <CheckBox Name="CommentsCheckBox" Content="コメントを取得する" />
+            <CheckBox x:Name="ThumbnailCheckBox" Content="サムネイルを付ける" />
+
+            <!--  Cookie Settings  -->
+            <TextBlock
+                Margin="0,15,0,5"
+                FontWeight="Bold"
+                Text="クッキーの設定" />
+            <CheckBox Name="UseCookiesCheckBox" Content="クッキーを使う" />
+            <StackPanel
+                Width="320"
+                Margin="10"
+                IsEnabled="{Binding ElementName=UseCookiesCheckBox, Path=IsChecked}"
+                Orientation="Horizontal">
+                <Button
+                    Name="SelectCookiesFileButton"
+                    Width="120"
+                    Margin="0,0,10,0"
+                    Click="SelectCookiesFileButton_Click"
+                    Content="ファイルを選択" />
+                <TextBox
+                    Name="CookiesFilePathTextBox"
+                    Width="180"
+                    IsReadOnly="True" />
+            </StackPanel>
+
+            <!--  Download Folder Selection  -->
+            <TextBlock
+                Margin="0,15,0,5"
+                FontWeight="Bold"
+                Text="ダウンロードフォルダ" />
+            <CheckBox x:Name="Download_Folder_Always_Use" Content="常に指定したダウンロードフォルダを使用する" />
+            <StackPanel
+                Width="320"
+                Margin="10"
+                IsEnabled="{Binding ElementName=Download_Folder_Always_Use, Path=IsChecked}"
+                Orientation="Horizontal">
+                <Button
+                    Name="SelectDownloadFolderButton"
+                    Width="120"
+                    Margin="0,0,10,0"
+                    Click="SelectDownloadFolderButton_Click"
+                    Content="フォルダを選択" />
+                <TextBox
+                    Name="DownloadFolderPathTextBox"
+                    Width="180"
+                    IsReadOnly="True" />
+            </StackPanel>
+            <TextBlock
+                Margin="0,10,0,5"
+                FontWeight="Bold"
+                Text="リトライ回数を指定" />
+            <TextBox x:Name="Retries" Text="" />
+            <Button
+                Width="60"
+                Height="25"
+                Margin="5"
+                Click="Settings_Save_Button_Click"
+                Content="保存" />
+        </StackPanel>
+    </Grid>
+</Window>
