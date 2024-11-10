@@ -97,7 +97,7 @@
     </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Click="Settings_MenuItem_Click" Header="設定" />
+            <MenuItem Click="Settings_MenuItem_Click" Header="{DynamicResource Menu_Settings}" />
         </Menu>
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
@@ -109,7 +109,7 @@
                 <RowDefinition Height="55*" />
             </Grid.RowDefinitions>
             <TabControl Grid.RowSpan="2" Grid.ColumnSpan="2">
-                <TabItem Header="ダウンローダー">
+                <TabItem Header="{DynamicResource Menu_Download}">
                     <Grid Background="Gray">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="125*" />
@@ -295,8 +295,8 @@
                         </Button>
                     </Grid>
                 </TabItem>
-                <TabItem Header="動画情報取得" />
-                <TabItem Header="履歴">
+                <TabItem Header="{DynamicResource Menu_VideoInformation}" />
+                <TabItem Header="{DynamicResource Menu_Recent}">
                     <Grid Background="Gray">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />

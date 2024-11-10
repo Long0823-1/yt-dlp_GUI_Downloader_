@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:yt_dlp_GUI_Downloader.Downloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="URLを追加"
+    Title="{DynamicResource Url_Title}"
     Width="550"
     Height="250"
     MaxWidth="550"
@@ -101,7 +101,7 @@
     </Window.Resources>
     <StackPanel Orientation="Vertical">
 
-        <Label HorizontalAlignment="Center" Content="URLを入力してください。&#xa;※複数行入力可能" />
+        <Label HorizontalAlignment="Center" Content="{DynamicResource Url_Label}" />
         <TextBox
             x:Name="Url_TextBox"
             Width="502"
