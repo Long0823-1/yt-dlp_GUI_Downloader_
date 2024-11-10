@@ -13,7 +13,7 @@ yt-dlp.exeをGUIで操作することができます。
 
 ## 使用方法
 ### 言語選択
-![language](https://github.com/user-attachments/assets/4e8ad913-3671-4c1f-b8fa-4ea434436a70)
+![Frame 2](https://github.com/user-attachments/assets/c55f09e2-6de4-44e8-be70-853a942b198f)
 
 ここから言語を切り替えることができます。  
 次回起動以降は、選択した言語になります。
