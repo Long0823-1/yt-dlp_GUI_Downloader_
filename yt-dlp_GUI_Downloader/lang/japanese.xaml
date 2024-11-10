@@ -6,6 +6,15 @@
     <sys:String x:Key="Menu_VideoInformation">動画情報取得</sys:String>
     <sys:String x:Key="Menu_Recent">履歴</sys:String>
     <sys:String x:Key="Menu_Settings">設定</sys:String>
+    <sys:String x:Key="Menu_Open">開く</sys:String>
+    <sys:String x:Key="Menu_Delete">削除</sys:String>
+    <sys:String x:Key="Menu_All_Delete">リストのアイテムをすべて削除</sys:String>
+    <sys:String x:Key="Menu_Lang">言語</sys:String>
+    <sys:String x:Key="Menu_Lang_Ja">日本語</sys:String>
+    <sys:String x:Key="Menu_Lang_En">英語</sys:String>
+    <sys:String x:Key="Menu_Lang_Ch_Kan">中国語（簡体字）</sys:String>
+    <sys:String x:Key="Menu_Lang_Ch_Han">中国語（繁体字）</sys:String>
+
 
     <sys:String x:Key="Url_Title">URLを追加</sys:String>
     <sys:String x:Key="Url_Label">URLを入力してください&#xa;※複数行入力可能です</sys:String>
@@ -27,5 +36,4 @@
     <sys:String x:Key="Settings_Retry">リトライ回数を指定</sys:String>
     <sys:String x:Key="Settings_Save">保存</sys:String>
 
-    <sys:String x:Key="Video_Information">保存</sys:String>
 </ResourceDictionary>

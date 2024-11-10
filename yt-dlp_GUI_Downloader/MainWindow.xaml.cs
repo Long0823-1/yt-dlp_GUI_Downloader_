@@ -1,11 +1,8 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
-using Microsoft.WindowsAPICodePack.Dialogs.Controls;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 using yt_dlp_GUI_Downloader.Downloader;
 using yt_dlp_GUI_Downloader.yt_dlp;
 using static yt_dlp_GUI_Downloader.MainViewModel;
@@ -29,9 +26,24 @@ namespace yt_dlp_GUI_Downloader
 
             RecentData recent = new RecentData();
             Settings_Load(); // 設定をロード
+            Lang_Getter();
             recent.GetRecent();
         }
         MainViewModel _vm;
+
+        string LangPath = @".\Resources\Lang.txt";
+        private void Lang_Getter()
+        {
+            if (File.Exists(LangPath))
+            {
+                StreamReader sr = new StreamReader(LangPath);
+
+                string path = sr.ReadLine();
+                sr.Close();
+                ChangeLang(path);
+
+            }
+        }
 
         private void Settings_Load()
         {
@@ -55,7 +67,7 @@ namespace yt_dlp_GUI_Downloader
         {
             if (!File.Exists(SavePath))
             {
-                MessageBox.Show("設定ファイルが存在しません！\n設定が完了後、ダウンロードができます。", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("The configuration file does not exist! \nYou can proceed with the download once the setup is complete.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 Settings_MenuItem item = new Settings_MenuItem();
                 item.ShowDialog();
             }
@@ -73,22 +85,26 @@ namespace yt_dlp_GUI_Downloader
                 }
                 dlg.Dispose();
             }
-            else if(!File.Exists(SavePath))
+            else if (!File.Exists(SavePath))
             {
-                MessageBox.Show("設定ファイルが存在しません！\nメニューの「設定」からも設定できます。", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("The configuration file does not exist! \nYou can also configure it from 'Settings' in the menu.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
-                MessageBox.Show("動画を追加してください！", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please add a video!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
+        bool Download_Now = false;
 
         /// <summary>
         /// 実際にダウンロードを開始
         /// </summary>
         /// <param name="saveFilePath"></param>
-        private static void DownloadStart(string? saveFilePath)
+        private void DownloadStart(string? saveFilePath)
         {
+            Toast.ShowToast("Information", $"Download Start!");
+            Download_Now = true;
             Yt_dlp_Downloader downloader = new Yt_dlp_Downloader();
             downloader.DownloadAsync(saveFilePath);
         }
@@ -96,7 +112,7 @@ namespace yt_dlp_GUI_Downloader
         private void Url_Add_Click(object sender, RoutedEventArgs e)
         {
             Url_Add url_Add = new Url_Add();
-            url_Add.ShowDialog();          
+            url_Add.ShowDialog();
         }
 
         private void Settings_MenuItem_Click(object sender, RoutedEventArgs e)
@@ -107,15 +123,28 @@ namespace yt_dlp_GUI_Downloader
 
         private void Open_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            string url = (DownloadList.SelectedItem as Items).Url;
+            string url = ((DownloadList).SelectedItem as Items).Url;
             Debug.WriteLine((DownloadList.SelectedItem as Items).DownloadSingleSettings.VideoExtension);
-            /*var proc = new ProcessStartInfo()
+            var proc = new ProcessStartInfo()
             {
                 FileName = url,
                 UseShellExecute = true,
                 CreateNoWindow = true,
             };
-            System.Diagnostics.Process.Start(proc);*/
+            System.Diagnostics.Process.Start(proc);
+
+        }
+        private void Open_MenuItem_Recent_Click(object sender, RoutedEventArgs e)
+        {
+            string url = ((Recent_ListView).SelectedItem as Items).Url;
+            Debug.WriteLine((Recent_ListView.SelectedItem as Items).DownloadSingleSettings.VideoExtension);
+            var proc = new ProcessStartInfo()
+            {
+                FileName = url,
+                UseShellExecute = true,
+                CreateNoWindow = true,
+            };
+            System.Diagnostics.Process.Start(proc);
 
         }
 
@@ -137,6 +166,63 @@ namespace yt_dlp_GUI_Downloader
         {
             RecentData recent = new RecentData();
             recent.GetRecent();
+        }
+
+        private void English_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeLang(@"lang/english.xaml");
+        }
+        private void Japanese_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeLang(@"lang/japanese.xaml");
+        }
+
+        private void Chinese_Click_Kan(object sender, RoutedEventArgs e)
+        {
+            ChangeLang(@"lang/chinese_Kan.xaml");
+        }
+        private void Chinese_Click_Han(object sender, RoutedEventArgs e)
+        {
+            ChangeLang(@"lang/chinese_Han.xaml");
+        }
+
+        private void ChangeLang(string langFile)
+        {
+            ResourceDictionary langRd = null;
+            using (StreamWriter sw = new StreamWriter(LangPath))
+            {
+                sw.WriteLine(langFile);
+            }
+
+            try
+            {
+                langRd = Application.LoadComponent(new Uri(langFile, UriKind.Relative)) as ResourceDictionary;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (langRd != null)
+            {
+                if (this.Resources.MergedDictionaries.Count > 0)
+                {
+                    this.Resources.MergedDictionaries[0] = langRd;
+                }
+                else
+                {
+                    this.Resources.MergedDictionaries.Add(langRd);
+                }
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (Download_Now)
+            {
+                _vm.Download_Cancel = true;
+                Download_Now = false;
+            }
         }
     }
 }

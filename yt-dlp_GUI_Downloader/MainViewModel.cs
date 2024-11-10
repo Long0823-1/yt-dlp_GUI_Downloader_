@@ -74,6 +74,13 @@ namespace yt_dlp_GUI_Downloader
             get { return _SettingsClass; }
             set { SetProperty(ref _SettingsClass, value, nameof(SettingsClass)); }
         }
+
+        private bool _Download_Cancel = false;
+        public bool Download_Cancel
+        {
+            get => _Download_Cancel;
+            set=> SetProperty(ref _Download_Cancel,value,nameof(Download_Cancel));
+        }
     }
 }
 

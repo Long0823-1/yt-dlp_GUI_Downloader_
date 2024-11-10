@@ -1,4 +1,38 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="Menu_Download">Downloader</sys:String>
+    <sys:String x:Key="Menu_VideoInformation">Fetch Video Information</sys:String>
+    <sys:String x:Key="Menu_Recent">History</sys:String>
+    <sys:String x:Key="Menu_Settings">Settings</sys:String>
+    <sys:String x:Key="Menu_Open">Open</sys:String>
+    <sys:String x:Key="Menu_Delete">Delete</sys:String>
+    <sys:String x:Key="Menu_All_Delete">Delete All Items in List</sys:String>
+    <sys:String x:Key="Menu_Lang">Language</sys:String>
+    <sys:String x:Key="Menu_Lang_Ja">Japanese</sys:String>
+    <sys:String x:Key="Menu_Lang_En">English</sys:String>
+    <sys:String x:Key="Menu_Lang_Ch_Kan">Simplified Chinese</sys:String>
+    <sys:String x:Key="Menu_Lang_Ch_Han">Traditional Chinese</sys:String>
+
+
+    <sys:String x:Key="Url_Title">Add URL</sys:String>
+    <sys:String x:Key="Url_Label">Please enter the URL(s)&#xa;※Multiple lines allowed</sys:String>
+
+    <sys:String x:Key="Settings_Choice_Video_Codec">Specify Video Codec</sys:String>
+    <sys:String x:Key="Settings_Choice_Video_Pixel">Resolution</sys:String>
+    <sys:String x:Key="Settings_Choice_Audio_Codec">Specify Audio Codec</sys:String>
+    <sys:String x:Key="Settings_Choice_Audio_Only">Download Audio Only</sys:String>
+    <sys:String x:Key="Settings_Choice_Extension">Video Extension</sys:String>
+    <sys:String x:Key="Settings_Choice_Gaiyoran">Save Description</sys:String>
+    <sys:String x:Key="Settings_Choice_Comment">Fetch Comments</sys:String>
+    <sys:String x:Key="Settings_Choice_Thumbnail">Add Thumbnail</sys:String>
+    <sys:String x:Key="Settings_Cookies">Cookie Settings</sys:String>
+    <sys:String x:Key="Settings_Download_Folder">Download Folder</sys:String>
+    <sys:String x:Key="Settings_Choice_Cookies">Use Cookies</sys:String>
+    <sys:String x:Key="Settings_Choice_Download_Folder">Always Use Specified Download Folder</sys:String>
+    <sys:String x:Key="Settings_Folder_Choice">Select Folder</sys:String>
+    <sys:String x:Key="Settings_File_Choice">Select File</sys:String>
+    <sys:String x:Key="Settings_Retry">Specify Retry Count</sys:String>
+    <sys:String x:Key="Settings_Save">Save</sys:String>
 </ResourceDictionary>

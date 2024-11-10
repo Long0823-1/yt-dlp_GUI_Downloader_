@@ -98,23 +98,45 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Click="Settings_MenuItem_Click" Header="{DynamicResource Menu_Settings}" />
+            <MenuItem Header="{DynamicResource Menu_Lang}">
+                <MenuItem
+                    x:Name="Japanese"
+                    Click="Japanese_Click"
+                    Header="{DynamicResource Menu_Lang_Ja}" />
+                <MenuItem
+                    x:Name="English"
+                    Click="English_Click"
+                    Header="{DynamicResource Menu_Lang_En}" />
+                <MenuItem
+                    x:Name="Chinese_Kan"
+                    Click="Chinese_Click_Kan"
+                    Header="{DynamicResource Menu_Lang_Ch_Kan}" />
+                <MenuItem
+                    x:Name="Chinese_Han"
+                    Click="Chinese_Click_Han"
+                    Header="{DynamicResource Menu_Lang_Ch_Han}" />
+            </MenuItem>
         </Menu>
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="62*" />
-                <ColumnDefinition Width="8.7*" />
+                <ColumnDefinition Width="305*" />
+                <ColumnDefinition Width="180*"/>
+                <ColumnDefinition Width="159*"/>
+                <ColumnDefinition Width="136*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="162*" />
                 <RowDefinition Height="55*" />
             </Grid.RowDefinitions>
-            <TabControl Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <TabControl Grid.RowSpan="2" Grid.ColumnSpan="4">
                 <TabItem Header="{DynamicResource Menu_Download}">
                     <Grid Background="Gray">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="125*" />
-                            <ColumnDefinition Width="533*" />
-                            <ColumnDefinition Width="116*" />
+                            <ColumnDefinition Width="139*" />
+                            <ColumnDefinition Width="184*" />
+                            <ColumnDefinition Width="150*"/>
+                            <ColumnDefinition Width="158*"/>
+                            <ColumnDefinition Width="143*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="152*" />
@@ -123,7 +145,7 @@
                         <Button
                             Grid.Row="1"
                             Grid.Column="2"
-                            Margin="5,10,5,10"
+                            Margin="10,15,10,10"
                             BorderBrush="{x:Null}"
                             Click="Download_Start_Click"
                             Content="Button"
@@ -138,14 +160,14 @@
                         </Button>
                         <ListView
                             Name="DownloadList"
-                            Grid.ColumnSpan="3"
+                            Grid.ColumnSpan="5"
                             Margin="9,10,10,10"
                             ItemsSource="{Binding DownloadItems}">
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Click="Open_MenuItem_Click" Header="開く" />
-                                    <MenuItem Click="Delete_MenuItem_Click" Header="削除" />
-                                    <MenuItem Click="List_All_MenuItem_Click" Header="リストのアイテムをすべて削除" />
+                                    <MenuItem Click="Open_MenuItem_Click" Header="{DynamicResource Menu_Open}" />
+                                    <MenuItem Click="Delete_MenuItem_Click" Header="{DynamicResource Menu_Delete}" />
+                                    <MenuItem Click="List_All_MenuItem_Click" Header="{DynamicResource Menu_All_Delete}" />
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
@@ -163,14 +185,14 @@
                                             <TextBlock FontSize="20" Text="{Binding Title}" />
                                             <TextBlock FontSize="20" Text="{Binding Progress_Title}" />
                                             <ProgressBar
-                                                Margin="5"
                                                 Height="20"
+                                                Margin="5"
                                                 Maximum="1"
                                                 Value="{Binding Progress_Value}" />
                                             <StackPanel Margin="5" Orientation="Horizontal">
                                                 <StackPanel Margin="5" Orientation="Vertical">
                                                     <!--  Video Codec  -->
-                                                    <TextBlock Margin="0,5" Text="指定する映像コーディック" />
+                                                    <TextBlock Margin="0,5" Text="{DynamicResource Settings_Choice_Video_Codec}" />
                                                     <ComboBox x:Name="VideoCodecComboBox" SelectedIndex="{Binding DownloadSingleSettings.VideoCodec}">
                                                         <ComboBoxItem Content="H264" />
                                                         <ComboBoxItem Content="H265" />
@@ -179,7 +201,7 @@
                                                     </ComboBox>
 
                                                     <!--  Resolution  -->
-                                                    <TextBlock Margin="0,10,0,5" Text="解像度" />
+                                                    <TextBlock Margin="0,10,0,5" Text="{DynamicResource Settings_Choice_Video_Pixel}" />
                                                     <ComboBox Name="ResolutionComboBox" SelectedIndex="{Binding DownloadSingleSettings.Pixel}">
                                                         <ComboBoxItem Content="256x144" />
                                                         <ComboBoxItem Content="426x240" />
@@ -194,7 +216,7 @@
                                                 </StackPanel>
                                                 <StackPanel Margin="5" Orientation="Vertical">
                                                     <!--  Audio Codec  -->
-                                                    <TextBlock Margin="0,5,0,5" Text="指定するオーディオコーデック" />
+                                                    <TextBlock Margin="0,5,0,5" Text="{DynamicResource Settings_Choice_Audio_Codec}" />
                                                     <ComboBox
                                                         Name="AudioCodecComboBox"
                                                         IsEnabled="{Binding ElementName=AudioOnlyCheckBox, Path=IsChecked}"
@@ -207,12 +229,12 @@
                                                     <CheckBox
                                                         Name="AudioOnlyCheckBox"
                                                         Margin="0,10,0,5"
-                                                        Content="音声のみをダウンロードする"
+                                                        Content="{DynamicResource Settings_Choice_Audio_Only}"
                                                         IsChecked="{Binding DownloadSingleSettings.IsAudioOnly}" />
                                                 </StackPanel>
                                                 <StackPanel Margin="5" Orientation="Vertical">
                                                     <!--  Video Extension  -->
-                                                    <TextBlock Margin="0,5,0,5" Text="映像拡張子" />
+                                                    <TextBlock Margin="0,5,0,5" Text="{DynamicResource Settings_Choice_Extension}" />
                                                     <ComboBox Name="VideoExtensionComboBox" SelectedIndex="{Binding DownloadSingleSettings.VideoExtension}">
                                                         <ComboBoxItem Content="MKV" />
                                                         <ComboBoxItem Content="MP4" />
@@ -221,37 +243,33 @@
                                                     <TextBlock
                                                         Margin="0,10,0,5"
                                                         FontWeight="Bold"
-                                                        Text="リトライ回数を指定" />
+                                                        Text="{DynamicResource Settings_Retry}" />
                                                     <TextBox x:Name="Retries" Text="{Binding DownloadSingleSettings.Retries}" />
                                                 </StackPanel>
                                                 <StackPanel Margin="5" Orientation="Vertical">
 
                                                     <!--  YouTube-specific Options  -->
-                                                    <TextBlock
-                                                        Margin="0,5,0,5"
-                                                        FontWeight="Bold"
-                                                        Text="YouTube限定の機能" />
                                                     <CheckBox
                                                         Name="DescriptionCheckBox"
-                                                        Content="概要欄を保存する"
+                                                        Content="{DynamicResource Settings_Choice_Gaiyoran}"
                                                         IsChecked="{Binding DownloadSingleSettings.IsGaiyoranSave}" />
                                                     <CheckBox
                                                         Name="CommentsCheckBox"
-                                                        Content="コメントを取得する"
+                                                        Content="{DynamicResource Settings_Choice_Comment}"
                                                         IsChecked="{Binding DownloadSingleSettings.IsCommentSave}" />
                                                     <CheckBox
                                                         x:Name="ThumbnailCheckBox"
-                                                        Content="サムネイルを付ける"
+                                                        Content="{DynamicResource Settings_Choice_Thumbnail}"
                                                         IsChecked="{Binding DownloadSingleSettings.IsThumbnailSave}" />
 
                                                     <!--  Cookie Settings  -->
                                                     <TextBlock
                                                         Margin="0,15,0,5"
                                                         FontWeight="Bold"
-                                                        Text="クッキーの設定" />
+                                                        Text="{DynamicResource Settings_Cookies}" />
                                                     <CheckBox
                                                         Name="UseCookiesCheckBox"
-                                                        Content="クッキーを使う"
+                                                        Content="{DynamicResource Settings_Choice_Cookies}"
                                                         IsChecked="{Binding DownloadSingleSettings.IsUseCookies}" />
                                                     <StackPanel
                                                         Name="CookiesStackPanel"
@@ -264,7 +282,7 @@
                                                             Width="120"
                                                             Margin="0,0,10,0"
                                                             Click="SelectCookiesFileButton_Click"
-                                                            Content="ファイルを選択" />
+                                                            Content="{DynamicResource Settings_File_Choice}" />
                                                         <TextBox
                                                             Name="CookiesFilePathTextBox"
                                                             Width="180"
@@ -279,8 +297,23 @@
                             </ListView.ItemTemplate>
                         </ListView>
                         <Button
+                Grid.Row="1"
+                Margin="10,15,10,10"
+                BorderBrush="{x:Null}"
+                Click="Button_Click_1"
+                Content="Button"
+                Foreground="{x:Null}"
+                Style="{DynamicResource ButtonStyle1}" Grid.Column="4">
+                            <Button.Background>
+                                <ImageBrush
+                        ImageSource="/Images/cancel.png"
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Stretch="Uniform" />
+                            </Button.Background>
+                        </Button>
+                        <Button
                             Grid.Row="1"
-                            Margin="11,15,11,15"
+                            Margin="10,15,10,10"
                             BorderBrush="{x:Null}"
                             Click="Url_Add_Click"
                             Content="URL_Add"
@@ -293,19 +326,26 @@
                                     Stretch="Uniform" />
                             </Button.Background>
                         </Button>
+                        <!--  Download Folder Selection  -->
                     </Grid>
                 </TabItem>
-                <TabItem Header="{DynamicResource Menu_VideoInformation}" />
                 <TabItem Header="{DynamicResource Menu_Recent}">
                     <Grid Background="Gray">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="90*" />
-                            <RowDefinition Height="13*" />
+                            <RowDefinition />
                         </Grid.RowDefinitions>
-                        <ListView Margin="9,10,10,11" ItemsSource="{Binding RecentDownloadItems}">
+                        <ListView
+                            x:Name="Recent_ListView"
+                            Margin="9,10,10,10"
+                            ItemsSource="{Binding RecentDownloadItems}">
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Click="Open_MenuItem_Recent_Click" Header="{DynamicResource Menu_Open}" />
+                                </ContextMenu>
+                            </ListView.ContextMenu>
                             <ListView.ItemTemplate>
                                 <DataTemplate x:Name="DoubleLineDataTemplate">
                                     <StackPanel Orientation="Horizontal">
@@ -323,7 +363,7 @@
                                             <StackPanel Margin="5" Orientation="Horizontal">
                                                 <StackPanel Margin="5" Orientation="Vertical">
                                                     <!--  Video Codec  -->
-                                                    <TextBlock Margin="0,5" Text="指定する映像コーディック" />
+                                                    <TextBlock Margin="0,5" Text="{DynamicResource Settings_Choice_Video_Codec}" />
                                                     <ComboBox
                                                         x:Name="VideoCodecComboBox"
                                                         IsReadOnly="True"
@@ -335,7 +375,7 @@
                                                     </ComboBox>
 
                                                     <!--  Resolution  -->
-                                                    <TextBlock Margin="0,10,0,5" Text="解像度" />
+                                                    <TextBlock Margin="0,10,0,5" Text="{DynamicResource Settings_Choice_Video_Pixel}" />
                                                     <ComboBox
                                                         Name="ResolutionComboBox"
                                                         IsReadOnly="True"
@@ -353,7 +393,7 @@
                                                 </StackPanel>
                                                 <StackPanel Margin="5" Orientation="Vertical">
                                                     <!--  Audio Codec  -->
-                                                    <TextBlock Margin="0,5,0,5" Text="指定するオーディオコーデック" />
+                                                    <TextBlock Margin="0,5,0,5" Text="{DynamicResource Settings_Choice_Audio_Codec}" />
                                                     <ComboBox
                                                         Name="AudioCodecComboBox"
                                                         IsEnabled="{Binding ElementName=AudioOnlyCheckBox, Path=IsChecked}"
@@ -367,12 +407,12 @@
                                                     <CheckBox
                                                         Name="AudioOnlyCheckBox"
                                                         Margin="0,10,0,5"
-                                                        Content="音声のみをダウンロードする"
+                                                        Content="{DynamicResource Settings_Choice_Audio_Only}"
                                                         IsChecked="{Binding DownloadSingleSettings.IsAudioOnly}" />
                                                 </StackPanel>
                                                 <StackPanel Margin="5" Orientation="Vertical">
                                                     <!--  Video Extension  -->
-                                                    <TextBlock Margin="0,5,0,5" Text="映像拡張子" />
+                                                    <TextBlock Margin="0,5,0,5" Text="{DynamicResource Settings_Choice_Extension}" />
                                                     <ComboBox
                                                         Name="VideoExtensionComboBox"
                                                         IsReadOnly="True"
@@ -385,30 +425,26 @@
                                                 <StackPanel Margin="5" Orientation="Vertical">
 
                                                     <!--  YouTube-specific Options  -->
-                                                    <TextBlock
-                                                        Margin="0,5,0,5"
-                                                        FontWeight="Bold"
-                                                        Text="YouTube限定の機能" />
                                                     <CheckBox
                                                         Name="DescriptionCheckBox"
-                                                        Content="概要欄を保存する"
+                                                        Content="{DynamicResource Settings_Choice_Gaiyoran}"
                                                         IsChecked="{Binding DownloadSingleSettings.IsGaiyoranSave}" />
                                                     <CheckBox
                                                         Name="CommentsCheckBox"
-                                                        Content="コメントを取得する"
+                                                        Content="{DynamicResource Settings_Choice_Comment}"
                                                         IsChecked="{Binding DownloadSingleSettings.IsCommentSave}" />
                                                     <CheckBox
                                                         x:Name="ThumbnailCheckBox"
-                                                        Content="サムネイルを付ける"
+                                                        Content="{DynamicResource Settings_Choice_Thumbnail}"
                                                         IsChecked="{Binding DownloadSingleSettings.IsThumbnailSave}" />
                                                     <!--  Cookie Settings  -->
                                                     <TextBlock
                                                         Margin="0,15,0,5"
                                                         FontWeight="Bold"
-                                                        Text="クッキーの設定" />
+                                                        Text="{DynamicResource Settings_Cookies}" />
                                                     <CheckBox
                                                         Name="UseCookiesCheckBox"
-                                                        Content="クッキーを使う"
+                                                        Content="{DynamicResource Settings_Choice_Cookies}"
                                                         IsChecked="{Binding DownloadSingleSettings.IsUseCookies}" />
                                                     <StackPanel
                                                         Name="CookiesStackPanel"
@@ -421,7 +457,7 @@
                                                             Width="120"
                                                             Margin="0,0,10,0"
                                                             Click="SelectCookiesFileButton_Click"
-                                                            Content="ファイルを選択" />
+                                                            Content="{DynamicResource Settings_File_Choice}" />
                                                         <TextBox
                                                             Name="CookiesFilePathTextBox"
                                                             Width="180"
@@ -435,11 +471,6 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Button
-                            Grid.Row="1"
-                            Margin="10,12,9,11"
-                            Click="Button_Click"
-                            Content="リロード" />
                     </Grid>
                 </TabItem>
             </TabControl>

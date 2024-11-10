@@ -1,17 +1,5 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using yt_dlp_GUI_Downloader.yt_dlp;
 
 namespace yt_dlp_GUI_Downloader.Downloader
@@ -25,6 +13,8 @@ namespace yt_dlp_GUI_Downloader.Downloader
         {
             InitializeComponent();
             _vm = (App.Current as App).MainViewModel;
+
+            Lang_Getter();
         }
         MainViewModel _vm;
 
@@ -35,12 +25,63 @@ namespace yt_dlp_GUI_Downloader.Downloader
             Yt_dlp_Information_Getter get = new Yt_dlp_Information_Getter();
             var split_Url = Url_TextBox.Text.Split("\n");
             var IsAdded = await get.InformationExtractor(split_Url);
-            this.Close();
+
+            if (IsAdded)
+            {
+                this.Close();
+            }
+            else
+            {
+                OK_Button.Visibility = Visibility.Visible;
+                prog.Visibility = Visibility.Hidden;
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Close();
+        }
+        string LangPath = @".\Resources\Lang.txt";
+
+        private void Lang_Getter()
+        {
+            if (File.Exists(LangPath))
+            {
+                StreamReader sr = new StreamReader(LangPath);
+
+                string path = sr.ReadLine();
+                sr.Close();
+                ChangeLang(path);
+            }
+        }
+        private void ChangeLang(string langFile)
+        {
+            ResourceDictionary langRd = null;
+            using (StreamWriter sw = new StreamWriter(LangPath))
+            {
+                sw.WriteLine(langFile);
+            }
+
+            try
+            {
+                langRd = Application.LoadComponent(new Uri(langFile, UriKind.Relative)) as ResourceDictionary;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (langRd != null)
+            {
+                if (this.Resources.MergedDictionaries.Count > 0)
+                {
+                    this.Resources.MergedDictionaries[0] = langRd;
+                }
+                else
+                {
+                    this.Resources.MergedDictionaries.Add(langRd);
+                }
+            }
         }
     }
 }

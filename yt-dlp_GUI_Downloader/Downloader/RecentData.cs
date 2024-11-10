@@ -12,8 +12,13 @@ namespace yt_dlp_GUI_Downloader.Downloader
 {
     public class RecentData
     {
+        string Recent = @".\Recent";
         public RecentData() 
         {
+            if(!Directory.Exists(Recent))
+            {
+                Directory.CreateDirectory(Recent);
+            }
             _vm = (App.Current as App).MainViewModel;
         }
         MainViewModel _vm;

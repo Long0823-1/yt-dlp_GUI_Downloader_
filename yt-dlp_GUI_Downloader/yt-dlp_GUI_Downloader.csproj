@@ -19,11 +19,12 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>None</DebugType>
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Group 1.png" />
+    <None Remove="Images\cancel.png" />
     <None Remove="Images\OK.png" />
     <None Remove="Images\shadow_mashimashi.png" />
     <None Remove="Images\url.png" />
@@ -39,13 +40,14 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Prism.Core" Version="9.0.537" />
     <PackageReference Include="Soenneker.Libraries.FFmpeg" Version="2.5.361" />
-    <PackageReference Include="Soenneker.Libraries.ffprobe" Version="2.1.334" />
-    <PackageReference Include="Soenneker.Libraries.ytdlp" Version="2.1.332" />
+    <PackageReference Include="Soenneker.Libraries.ffprobe" Version="2.1.341" />
+    <PackageReference Include="Soenneker.Libraries.ytdlp" Version="2.1.336" />
     <PackageReference Include="WindowsAPICodePack" Version="8.0.6" />
     <PackageReference Include="YoutubeDLSharp" Version="1.1.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\cancel.png" />
     <Resource Include="Images\Group 1.png" />
     <Resource Include="Images\OK.png" />
     <Resource Include="Images\Run_shadow.png" />

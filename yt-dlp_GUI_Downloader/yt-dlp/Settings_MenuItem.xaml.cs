@@ -18,6 +18,7 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
             InitializeComponent();
             _vm = (App.Current as App).MainViewModel;
 
+            Lang_Getter();
             Settings_Load();
         }
         MainViewModel _vm;
@@ -105,6 +106,50 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
             if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 DownloadFolderPathTextBox.Text = dlg.FileName;
+            }
+        }
+
+        string LangPath = @".\Resources\Lang.txt";
+
+        private void Lang_Getter()
+        {
+            if (File.Exists(LangPath))
+            {
+                StreamReader sr = new StreamReader(LangPath);
+
+                string path = sr.ReadLine();
+                sr.Close();
+                ChangeLang(path);
+
+            }
+        }
+        private void ChangeLang(string langFile)
+        {
+            ResourceDictionary langRd = null;
+            using (StreamWriter sw = new StreamWriter(LangPath))
+            {
+                sw.WriteLine(langFile);
+            }
+
+            try
+            {
+                langRd = Application.LoadComponent(new Uri(langFile, UriKind.Relative)) as ResourceDictionary;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (langRd != null)
+            {
+                if (this.Resources.MergedDictionaries.Count > 0)
+                {
+                    this.Resources.MergedDictionaries[0] = langRd;
+                }
+                else
+                {
+                    this.Resources.MergedDictionaries.Add(langRd);
+                }
             }
         }
     }

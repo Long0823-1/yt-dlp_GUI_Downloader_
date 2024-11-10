@@ -29,20 +29,12 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
 
                 var options = new OptionSet()
                 {
-                    Cookies = _vm.cookies
+                    Cookies = _vm.SettingsClass.CookiesPath
                 };
 
-                try
-                {
-                    var res = await ytdl.RunVideoDataFetch(Url);
-                    videoData = res.Data;
-                    var formats = videoData.Formats;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("何らかのエラーにより、処理ができませんでした。\nURLが正しいかご確認ください。");
-                }
-
+                var res = await ytdl.RunVideoDataFetch(Url);
+                videoData = res.Data;
+                var formats = videoData.Formats;
                 return videoData;
             });
         }
@@ -92,19 +84,21 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
                                 {
                                     await Application.Current.Dispatcher.InvokeAsync(new Action(() =>
                                     {
-                                        var SettingsItem = new Settings_Json_Save_Class {Retries=_vm.SettingsClass.Retries, AudioCodec = _vm.SettingsClass.AudioCodec, IsAudioOnly = _vm.SettingsClass.IsAudioOnly, CookiesPath = _vm.SettingsClass.CookiesPath, DownloadPath = _vm.SettingsClass.DownloadPath, IsCommentSave = _vm.SettingsClass.IsCommentSave, IsGaiyoranSave = _vm.SettingsClass.IsGaiyoranSave, IsThumbnailSave = _vm.SettingsClass.IsThumbnailSave, IsUseCookies = _vm.SettingsClass.IsUseCookies, IsUseDownloadPath = _vm.SettingsClass.IsUseDownloadPath, Pixel = _vm.SettingsClass.Pixel, VideoCodec = _vm.SettingsClass.VideoCodec, VideoExtension = _vm.SettingsClass.VideoExtension };
-                                        _vm.DownloadItems.Add(new Items { DownloadSingleSettings = SettingsItem, VideoData = video, ThumbImage = new BitmapImage(new Uri(video.Thumbnail)), Url = url, Title = video.Title, Pixel = 0, IsLive = (bool)video.IsLive});
+                                        var SettingsItem = new Settings_Json_Save_Class { Retries = _vm.SettingsClass.Retries, AudioCodec = _vm.SettingsClass.AudioCodec, IsAudioOnly = _vm.SettingsClass.IsAudioOnly, CookiesPath = _vm.SettingsClass.CookiesPath, DownloadPath = _vm.SettingsClass.DownloadPath, IsCommentSave = _vm.SettingsClass.IsCommentSave, IsGaiyoranSave = _vm.SettingsClass.IsGaiyoranSave, IsThumbnailSave = _vm.SettingsClass.IsThumbnailSave, IsUseCookies = _vm.SettingsClass.IsUseCookies, IsUseDownloadPath = _vm.SettingsClass.IsUseDownloadPath, Pixel = _vm.SettingsClass.Pixel, VideoCodec = _vm.SettingsClass.VideoCodec, VideoExtension = _vm.SettingsClass.VideoExtension };
+                                        _vm.DownloadItems.Add(new Items { DownloadSingleSettings = SettingsItem, VideoData = video, ThumbImage = new BitmapImage(new Uri(video.Thumbnail)), Url = url, Title = video.Title, Pixel = 0 });
                                     }));
                                 }
                             }
                             catch (Exception)
                             {
-                                MessageBox.Show("対応していないサイトかエラーが発生しました。", "警告", MessageBoxButton.OK, MessageBoxImage.Error);
+                                MessageBox.Show($"An unsupported site or an error has occurred.\n{url}", "警告", MessageBoxButton.OK, MessageBoxImage.Error);
+                                return false;
                             }
                         }
                         else
                         {
-                            MessageBox.Show("URLを入力してください!", "注意", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("Please enter the URL!", "Notice", MessageBoxButton.OK, MessageBoxImage.Error);
+                            return false;
                         }
                     }
                     return true;

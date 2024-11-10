@@ -7,9 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{DynamicResource Url_Title}"
     Width="550"
-    Height="250"
+    Height="240"
     MaxWidth="550"
-    MaxHeight="250"
+    MaxHeight="240"
     Closed="Window_Closed"
     WindowStyle="ToolWindow"
     mc:Ignorable="d">
@@ -110,7 +110,7 @@
             AcceptsReturn="True" />
         <Grid Height="48">
             <Button
-                Name="OK_Button"
+                x:Name="OK_Button"
                 Width="124"
                 Margin="0,2,0,1"
                 HorizontalAlignment="Center"
@@ -135,7 +135,7 @@
                 </Button.RenderTransform>
             </Button>
             <ProgressBar
-                Name="prog"
+                x:Name="prog"
                 IsIndeterminate="True"
                 Visibility="Hidden" />
         </Grid>

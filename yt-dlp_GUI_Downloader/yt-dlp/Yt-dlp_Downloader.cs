@@ -95,8 +95,14 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
         private async void ShowProgress(DownloadProgress p)
         {
             _vm.DownloadItems[0].Progress_Value = p.Progress;
+            if (_vm.Download_Cancel)
+            {
+                _vm.Download_Cancel = false;
+                cts.Cancel();
+                Toast.ShowToast("Information", $"Cancel");
+            }
             int ConvPer = (int)(p.Progress * 100);
-            _vm.DownloadItems[0].Progress_Title = $"ダウンロードスピード: {p.DownloadSpeed} | 予想終了時間: {p.ETA} | 完了パーセント: {ConvPer}%";
+            _vm.DownloadItems[0].Progress_Title = $"DownloadSpeed: {p.DownloadSpeed} | ETA: {p.ETA} | Percentage: {ConvPer}%";
             _vm.DownloadItems[0].Progress_State = p.State.ToString();
             Debug.WriteLine(p.State);
         }
@@ -134,13 +140,13 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
         {
             _vm.DownloadItems.Clear();
             Debug.WriteLine("End");
-            Toast.ShowToast("Information", $"ダウンロードが完了しました！");
+            Toast.ShowToast("Information", $"Download Done!");
             recent.GetRecent();
         }
 
         private void ReturnDownload()
         {
-            if (_vm.DownloadItems[0].DownloadSingleSettings.DownloadPath == "")
+            if (!_vm.DownloadItems[0].DownloadSingleSettings.IsUseDownloadPath)
             {
                 DownloadAsync(TempSaveFilePath);
             }
