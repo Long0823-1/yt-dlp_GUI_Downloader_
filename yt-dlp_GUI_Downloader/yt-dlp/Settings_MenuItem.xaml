@@ -7,11 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="設定"
     Width="380"
-    Height="650"
+    Height="580"
     MinWidth="380"
-    MinHeight="650"
+    MinHeight="580"
     MaxWidth="380"
-    MaxHeight="650"
+    MaxHeight="580"
     Topmost="True"
     mc:Ignorable="d">
     <Grid Margin="5">
@@ -62,7 +62,7 @@
             </ComboBox>
 
             <!--  YouTube-specific Options  -->
-            <CheckBox Margin="0,10,0,5" Name="DescriptionCheckBox" Content="{DynamicResource Settings_Choice_Gaiyoran}" />
+            <CheckBox Margin="0,10,0,0" Name="DescriptionCheckBox" Content="{DynamicResource Settings_Choice_Gaiyoran}" />
             <CheckBox Name="CommentsCheckBox" Content="{DynamicResource Settings_Choice_Comment}" />
             <CheckBox x:Name="ThumbnailCheckBox" Content="{DynamicResource Settings_Choice_Thumbnail}" />
 
@@ -111,14 +111,15 @@
                     Width="180"
                     IsReadOnly="True" />
             </StackPanel>
-            <TextBlock
-                Margin="0,10,0,5"
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
                 FontWeight="Bold"
                 Text="{DynamicResource Settings_Retry}" />
-            <TextBox x:Name="Retries" Text="" />
+                <TextBox Margin="10 0 0 0" x:Name="Retries" Text="100" Width="51" Height="19" />
+            </StackPanel>
             <Button
-                Width="60"
-                Height="25"
+                Width="130"
+                Height="29"
                 Margin="5"
                 Click="Settings_Save_Button_Click"
                 Content="{DynamicResource Settings_Save}" />

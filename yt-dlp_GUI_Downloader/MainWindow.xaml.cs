@@ -136,15 +136,21 @@ namespace yt_dlp_GUI_Downloader
         }
         private void Open_MenuItem_Recent_Click(object sender, RoutedEventArgs e)
         {
-            string url = ((Recent_ListView).SelectedItem as Items).Url;
-            Debug.WriteLine((Recent_ListView.SelectedItem as Items).DownloadSingleSettings.VideoExtension);
-            var proc = new ProcessStartInfo()
+            try
             {
-                FileName = url,
-                UseShellExecute = true,
-                CreateNoWindow = true,
-            };
-            System.Diagnostics.Process.Start(proc);
+                string url = ((Recent_ListView).SelectedItem as Items).Url;
+                Debug.WriteLine((Recent_ListView.SelectedItem as Items).DownloadSingleSettings.VideoExtension);
+                var proc = new ProcessStartInfo()
+                {
+                    FileName = url,
+                    UseShellExecute = true,
+                    CreateNoWindow = true,
+                };
+                System.Diagnostics.Process.Start(proc);
+            }
+            catch (Exception ex)
+            { }
+
 
         }
 
