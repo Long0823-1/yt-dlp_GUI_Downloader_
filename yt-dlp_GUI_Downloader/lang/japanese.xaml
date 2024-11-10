@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="Menu_Download">ダウンローダー</sys:String>
+    <sys:String x:Key="Menu_VideoInformation">動画情報取得</sys:String>
+    <sys:String x:Key="Menu_Recent">履歴</sys:String>
+    <sys:String x:Key="Menu_Settings">設定</sys:String>
+
+    <sys:String x:Key="Url_Title">URLを追加</sys:String>
+    <sys:String x:Key="Url_Label">URLを入力してください&#xa;※複数行入力可能です</sys:String>
+
+    <sys:String x:Key="Settings_Choice_Video_Codec">指定する映像コーディック</sys:String>
+    <sys:String x:Key="Settings_Choice_Video_Pixel">解像度</sys:String>
+    <sys:String x:Key="Settings_Choice_Audio_Codec">指定するオーディオコーデック</sys:String>
+    <sys:String x:Key="Settings_Choice_Audio_Only">音声のみをダウンロードする</sys:String>
+    <sys:String x:Key="Settings_Choice_Extension">映像拡張子</sys:String>
+
+
+</ResourceDictionary>

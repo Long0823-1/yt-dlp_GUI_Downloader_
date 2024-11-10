@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:yt_dlp_GUI_Downloader.Downloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="Url_Add"
+    Title="URLを追加"
     Width="550"
     Height="250"
     MaxWidth="550"
@@ -134,7 +134,10 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <ProgressBar Name="prog" IsIndeterminate="True" Visibility="Hidden"/>
+            <ProgressBar
+                Name="prog"
+                IsIndeterminate="True"
+                Visibility="Hidden" />
         </Grid>
     </StackPanel>
 </Window>
