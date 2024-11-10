@@ -50,6 +50,11 @@ ADD URLをクリックして、テキストボックスにURLを貼り付けて�
 
 ![image](https://github.com/user-attachments/assets/1935c634-19e7-48d6-ae8d-4096a46c3899)
 
+### 動画リストにあるアイテムを削除する
+
+アイテムの上で右クリックすると、「開く」「削除」「リスト内のアイテムをすべて削除」があります。  
+![image](https://github.com/user-attachments/assets/11767368-552f-4b5b-acfa-3668bf2877fb)
+
 ### 動画形式の指定について
 
 アイテムごとに解像度などの設定をできます。
@@ -75,6 +80,13 @@ ADD URLをクリックして、テキストボックスにURLを貼り付けて�
 
 指定したフォルダを見ると、指定した通りのファイルができています。  
 ![image](https://github.com/user-attachments/assets/e7e724b2-3cd0-41a7-9f28-91651cacf722)
+
+## 履歴について
+
+ダウンロード履歴を見ることができます。  
+右クリック→「開く」で動画ページが開きます。  
+![image](https://github.com/user-attachments/assets/c2b0978b-8619-4e5b-a3fb-d1e623a21850)
+
 
 ### 仕様について
 
