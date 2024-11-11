@@ -4,6 +4,7 @@
 
 yt-dlp.exeをGUIで操作することができます。
 
+### 寄付
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G315YFUU)
 
 ### 対応言語
