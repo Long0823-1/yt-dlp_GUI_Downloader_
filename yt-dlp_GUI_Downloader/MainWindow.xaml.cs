@@ -25,10 +25,14 @@ namespace yt_dlp_GUI_Downloader
             (App.Current as App).MainViewModel = _vm;
 
             RecentData recent = new RecentData();
+            ToolDownload();
             Settings_Load(); // 設定をロード
             Lang_Getter();
             recent.GetRecent();
         }
+
+
+
         MainViewModel _vm;
 
         string LangPath = @".\Resources\Lang.txt";
@@ -229,6 +233,19 @@ namespace yt_dlp_GUI_Downloader
                 _vm.Download_Cancel = true;
                 Download_Now = false;
             }
+        }
+        private async void ToolDownload()
+        {
+            Toast.ShowToast("Download", "Downloading ffmpeg and yt-dlp Now!\nDo not close the software until the “Download Complete” message appears.\n「ダウンロード終了」が表示されるまでソフトを閉じないでください。");
+            var isDownloadEnd = await ToolDownloader.Downloader();
+            if (isDownloadEnd)
+            {
+                Toast.ShowToast("Download", "Download Completed\nダウンロード終了");
+            }
+        }
+        private void ToolDownload_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+           ToolDownload();
         }
     }
 }

@@ -16,8 +16,8 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
         }
         MainViewModel _vm;
 
-        private readonly string yt_dlp_Path = @".\Resources\yt-dlp.exe";
-        private readonly string ffmpeg_Path = @".\Resources\ffmpeg.exe";
+        private readonly string yt_dlp_Path = @".\yt-dlp.exe";
+        private readonly string ffmpeg_Path = @".\ffmpeg.exe";
         public async Task<VideoData> Information_Getter(string Url)
         {
             return await Task.Run(async () =>
