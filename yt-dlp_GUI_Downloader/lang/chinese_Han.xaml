@@ -10,6 +10,7 @@
     <sys:String x:Key="Menu_Delete">刪除</sys:String>
     <sys:String x:Key="Menu_All_Delete">刪除列表中的所有項目</sys:String>
     <sys:String x:Key="Menu_Lang">語言</sys:String>
+    <sys:String x:Key="Menu_Tool_Downloader">下載工具</sys:String>
     <sys:String x:Key="Menu_Lang_Ja">日本語</sys:String>
     <sys:String x:Key="Menu_Lang_En">英語</sys:String>
     <sys:String x:Key="Menu_Lang_Ch_Kan">中文(简体字)</sys:String>

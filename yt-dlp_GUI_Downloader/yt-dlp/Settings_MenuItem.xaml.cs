@@ -109,7 +109,7 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
             }
         }
 
-        string LangPath = @".\Resources\Lang.txt";
+        string LangPath = @".\Lang.txt";
 
         private void Lang_Getter()
         {

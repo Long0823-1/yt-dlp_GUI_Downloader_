@@ -41,7 +41,7 @@ namespace yt_dlp_GUI_Downloader.Downloader
         {
             this.Close();
         }
-        string LangPath = @".\Resources\Lang.txt";
+        string LangPath = @".\Lang.txt";
 
         private void Lang_Getter()
         {

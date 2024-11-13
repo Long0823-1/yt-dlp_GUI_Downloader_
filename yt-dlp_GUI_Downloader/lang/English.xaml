@@ -9,6 +9,7 @@
     <sys:String x:Key="Menu_Open">Open</sys:String>
     <sys:String x:Key="Menu_Delete">Delete</sys:String>
     <sys:String x:Key="Menu_All_Delete">Delete All Items in List</sys:String>
+    <sys:String x:Key="Menu_Tool_Downloader">Download Tool</sys:String>
     <sys:String x:Key="Menu_Lang">Language</sys:String>
     <sys:String x:Key="Menu_Lang_Ja">Japanese</sys:String>
     <sys:String x:Key="Menu_Lang_En">English</sys:String>

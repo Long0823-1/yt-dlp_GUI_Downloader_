@@ -35,7 +35,7 @@ namespace yt_dlp_GUI_Downloader
 
         MainViewModel _vm;
 
-        string LangPath = @".\Resources\Lang.txt";
+        string LangPath = @".\Lang.txt";
         private void Lang_Getter()
         {
             if (File.Exists(LangPath))
@@ -199,6 +199,7 @@ namespace yt_dlp_GUI_Downloader
         private void ChangeLang(string langFile)
         {
             ResourceDictionary langRd = null;
+
             using (StreamWriter sw = new StreamWriter(LangPath))
             {
                 sw.WriteLine(langFile);

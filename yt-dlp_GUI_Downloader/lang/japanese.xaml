@@ -6,6 +6,7 @@
     <sys:String x:Key="Menu_VideoInformation">動画情報取得</sys:String>
     <sys:String x:Key="Menu_Recent">履歴</sys:String>
     <sys:String x:Key="Menu_Settings">設定</sys:String>
+    <sys:String x:Key="Menu_Tool_Downloader">ツールをダウンロード</sys:String>
     <sys:String x:Key="Menu_Open">開く</sys:String>
     <sys:String x:Key="Menu_Delete">削除</sys:String>
     <sys:String x:Key="Menu_All_Delete">リストのアイテムをすべて削除</sys:String>

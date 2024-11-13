@@ -98,7 +98,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Click="Settings_MenuItem_Click" Header="{DynamicResource Menu_Settings}" />
-            <MenuItem Click="ToolDownload_MenuItem_Click" Header="Tool Download"/>
+            <MenuItem Click="ToolDownload_MenuItem_Click" Header="{DynamicResource Menu_Tool_Downloader}"/>
             <MenuItem Header="{DynamicResource Menu_Lang}">
                 <MenuItem
                     x:Name="Japanese"

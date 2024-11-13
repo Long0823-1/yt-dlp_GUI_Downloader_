@@ -9,6 +9,7 @@
     <sys:String x:Key="Menu_Settings">设置</sys:String>
     <sys:String x:Key="Menu_Open">打开</sys:String>
     <sys:String x:Key="Menu_Delete">删除</sys:String>
+    <sys:String x:Key="Menu_Tool_Downloader">下载工具</sys:String>
     <sys:String x:Key="Menu_All_Delete">删除列表中的所有项目</sys:String>
     <sys:String x:Key="Menu_Lang">语言</sys:String>
     <sys:String x:Key="Menu_Lang_Ja">日本語</sys:String>
