@@ -17,29 +17,30 @@ namespace yt_dlp_GUI_Downloader.Downloader
             Lang_Getter();
         }
         MainViewModel _vm;
+        bool IsRunning = false;
 
         private async void OK_Button_Click(object sender, RoutedEventArgs e)
         {
+            IsRunning = true; // 処理中
+
             OK_Button.Visibility = Visibility.Hidden;
             prog.Visibility = Visibility.Visible;
+
             Yt_dlp_Information_Getter get = new Yt_dlp_Information_Getter();
             var split_Url = Url_TextBox.Text.Split("\n");
             var IsAdded = await get.InformationExtractor(split_Url);
 
             if (IsAdded)
             {
+                IsRunning = false;
                 this.Close();
             }
             else
             {
+                IsRunning = false;
                 OK_Button.Visibility = Visibility.Visible;
                 prog.Visibility = Visibility.Hidden;
             }
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            this.Close();
         }
         string LangPath = @".\Lang.txt";
 
@@ -82,6 +83,11 @@ namespace yt_dlp_GUI_Downloader.Downloader
                     this.Resources.MergedDictionaries.Add(langRd);
                 }
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = IsRunning;
         }
     }
 }

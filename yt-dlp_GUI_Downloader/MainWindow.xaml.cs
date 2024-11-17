@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using yt_dlp_GUI_Downloader.Downloader;
 using yt_dlp_GUI_Downloader.yt_dlp;
@@ -15,7 +16,11 @@ namespace yt_dlp_GUI_Downloader
     /// 
     public partial class MainWindow : Window
     {
+        MainViewModel _vm;
+
         private string SavePath = @".\Settings.json";
+        string LangPath = @".\Lang.txt";
+        bool Download_Now = false;
 
         public MainWindow()
         {
@@ -24,18 +29,19 @@ namespace yt_dlp_GUI_Downloader
             DataContext = _vm;
             (App.Current as App).MainViewModel = _vm;
 
-            RecentData recent = new RecentData();
-            ToolDownload();
-            Settings_Load(); // 設定をロード
-            Lang_Getter();
-            recent.GetRecent();
+            FirstRun(); //起動時の処理をまとめたやつ
         }
 
+        async void FirstRun()
+        {
+            await ToolDownload(); // ツールダウンローダー
+            RecentData recent = new RecentData(); // 履歴を弄るためのクラス
 
+            Settings_Load(); // 設定をロード
+            Lang_Getter(); // 言語を読み込む（処理を改善したい）
+            recent.GetRecent(); // 履歴をゲット
+        }
 
-        MainViewModel _vm;
-
-        string LangPath = @".\Lang.txt";
         private void Lang_Getter()
         {
             if (File.Exists(LangPath))
@@ -87,7 +93,8 @@ namespace yt_dlp_GUI_Downloader
                     string? saveFilePath = dlg.FileName;
                     DownloadStart(saveFilePath);
                 }
-                dlg.Dispose();
+
+                dlg.Dispose(); // 開放
             }
             else if (!File.Exists(SavePath))
             {
@@ -98,8 +105,6 @@ namespace yt_dlp_GUI_Downloader
                 MessageBox.Show("Please add a video!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
-
-        bool Download_Now = false;
 
         /// <summary>
         /// 実際にダウンロードを開始
@@ -127,7 +132,7 @@ namespace yt_dlp_GUI_Downloader
 
         private void Open_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            string url = ((DownloadList).SelectedItem as Items).Url;
+            string url = (DownloadList.SelectedItem as Items).Url;
             Debug.WriteLine((DownloadList.SelectedItem as Items).DownloadSingleSettings.VideoExtension);
             var proc = new ProcessStartInfo()
             {
@@ -142,7 +147,7 @@ namespace yt_dlp_GUI_Downloader
         {
             try
             {
-                string url = ((Recent_ListView).SelectedItem as Items).Url;
+                string url = (Recent_ListView.SelectedItem as Items).Url;
                 Debug.WriteLine((Recent_ListView.SelectedItem as Items).DownloadSingleSettings.VideoExtension);
                 var proc = new ProcessStartInfo()
                 {
@@ -170,6 +175,7 @@ namespace yt_dlp_GUI_Downloader
 
         private void SelectCookiesFileButton_Click(object sender, RoutedEventArgs e)
         {
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -235,13 +241,16 @@ namespace yt_dlp_GUI_Downloader
                 Download_Now = false;
             }
         }
-        private static async Task<bool> ToolDownload()
+        private async Task<bool> ToolDownload()
         {
+            ToolDownloader_Button.IsEnabled = false;
             var isDownloadEnd = await ToolDownloader.Downloader();
             if (isDownloadEnd)
             {
                 Toast.ShowToast("Download", "Download Completed\nダウンロード終了");
             }
+            ToolDownloader_Button.IsEnabled = true;
+
             return isDownloadEnd;
         }
         private async void ToolDownload_MenuItem_Click(object sender, RoutedEventArgs e)

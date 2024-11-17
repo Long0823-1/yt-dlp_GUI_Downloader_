@@ -98,7 +98,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Click="Settings_MenuItem_Click" Header="{DynamicResource Menu_Settings}" />
-            <MenuItem Click="ToolDownload_MenuItem_Click" Header="{DynamicResource Menu_Tool_Downloader}"/>
+            <MenuItem Click="ToolDownload_MenuItem_Click" x:Name="ToolDownloader_Button" Header="{DynamicResource Menu_Tool_Downloader}" />
             <MenuItem Header="{DynamicResource Menu_Lang}">
                 <MenuItem
                     x:Name="Japanese"
@@ -121,8 +121,8 @@
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="305*" />
-                <ColumnDefinition Width="180*"/>
-                <ColumnDefinition Width="159*"/>
+                <ColumnDefinition Width="180*" />
+                <ColumnDefinition Width="159*" />
                 <ColumnDefinition Width="136*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -135,8 +135,8 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="139*" />
                             <ColumnDefinition Width="184*" />
-                            <ColumnDefinition Width="150*"/>
-                            <ColumnDefinition Width="158*"/>
+                            <ColumnDefinition Width="150*" />
+                            <ColumnDefinition Width="158*" />
                             <ColumnDefinition Width="143*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
@@ -298,18 +298,19 @@
                             </ListView.ItemTemplate>
                         </ListView>
                         <Button
-                Grid.Row="1"
-                Margin="10,15,10,10"
-                BorderBrush="{x:Null}"
-                Click="Button_Click_1"
-                Content="Button"
-                Foreground="{x:Null}"
-                Style="{DynamicResource ButtonStyle1}" Grid.Column="4">
+                            Grid.Row="1"
+                            Grid.Column="4"
+                            Margin="10,15,10,10"
+                            BorderBrush="{x:Null}"
+                            Click="Button_Click_1"
+                            Content="Button"
+                            Foreground="{x:Null}"
+                            Style="{DynamicResource ButtonStyle1}">
                             <Button.Background>
                                 <ImageBrush
-                        ImageSource="/Images/cancel.png"
-                        RenderOptions.BitmapScalingMode="Fant"
-                        Stretch="Uniform" />
+                                    ImageSource="/Images/cancel.png"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Stretch="Uniform" />
                             </Button.Background>
                         </Button>
                         <Button

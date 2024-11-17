@@ -12,6 +12,7 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <NeutralLanguage>ja-JP</NeutralLanguage>
     <ApplicationIcon>download.ico</ApplicationIcon>
+    <Copyright>Copyright (c) 2024 Long0823-1</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
