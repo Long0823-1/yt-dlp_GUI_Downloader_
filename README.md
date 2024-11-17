@@ -4,6 +4,10 @@
 
 `yt-dlp.exe` をGUIで簡単に操作できるツールです。
 
+[简体中文版的README请点击这里](https://github.com/Long0823-1/yt-dlp_GUI_Downloader_/blob/master/README_zh-CN.md)  
+[繁體中文版的README請點擊這裡](https://github.com/Long0823-1/yt-dlp_GUI_Downloader_/blob/master/README_zh-TW.md)  
+[English version of the README is available here.](https://github.com/Long0823-1/yt-dlp_GUI_Downloader_/blob/master/README_EN.md)  
+
 ## 寄付
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G315YFUU)
 
