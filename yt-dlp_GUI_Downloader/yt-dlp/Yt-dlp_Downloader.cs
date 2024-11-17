@@ -21,7 +21,7 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
 
         private IProgress<DownloadProgress> progress;
         private readonly string yt_dlp_Path = @".\yt-dlp.exe";
-        private readonly string ffmpeg_Path = @".\ffmpeg.exe";
+        private readonly string ffmpeg_Path = @".\ffmpeg-master-latest-win64-gpl-shared\bin\ffmpeg.exe";
         string[] Pixel = { "256x144", "426x240", "640x360", "854x480", "1280x720", "1920x1080", "2560x1440", "3840x2160", "7680x4320" };
         string[] VideoCodec = { "avc1", "h265", "vp09", "av01" };
         AudioConversionFormat[] AudioFormat = { AudioConversionFormat.Mp3, AudioConversionFormat.Aac, AudioConversionFormat.Flac };

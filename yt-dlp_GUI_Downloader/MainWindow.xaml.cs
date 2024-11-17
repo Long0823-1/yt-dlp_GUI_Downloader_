@@ -235,18 +235,21 @@ namespace yt_dlp_GUI_Downloader
                 Download_Now = false;
             }
         }
-        private async void ToolDownload()
+        private static async Task<bool> ToolDownload()
         {
-            Toast.ShowToast("Download", "Downloading ffmpeg and yt-dlp Now!\nDo not close the software until the “Download Complete” message appears.\n「ダウンロード終了」が表示されるまでソフトを閉じないでください。");
             var isDownloadEnd = await ToolDownloader.Downloader();
             if (isDownloadEnd)
             {
                 Toast.ShowToast("Download", "Download Completed\nダウンロード終了");
             }
+            return isDownloadEnd;
         }
-        private void ToolDownload_MenuItem_Click(object sender, RoutedEventArgs e)
+        private async void ToolDownload_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-           ToolDownload();
+            if (!await ToolDownload())
+            {
+                Toast.ShowToast("Information", "The tool has already been downloaded.\nツールはダウンロード済みです。");
+            }
         }
     }
 }
