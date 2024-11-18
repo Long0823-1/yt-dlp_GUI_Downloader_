@@ -8,6 +8,8 @@
     Title="yt-dlp_GUI_Downloader"
     Width="800"
     Height="700"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    Style="{StaticResource MaterialDesignWindow}"
     mc:Ignorable="d">
     <Window.Resources>
         <Style x:Key="FocusVisual">
@@ -94,6 +96,23 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="Mo" TargetType="{x:Type ListView}">
+            <Setter Property="Background" Value="{DynamicResource MaterialDesign.Brush.Background}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesign.Brush.ForegroundLight}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="{DynamicResource MaterialDesign.Brush.Foreground}"/>
+            <Setter Property="ItemContainerStyle" Value="{Binding View, Converter={StaticResource MaterialDesignListViewItemContainerStyleConverter}, RelativeSource={RelativeSource Mode=Self}}"/>
+            <Setter Property="OverridesDefaultStyle" Value="False"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template" Value="{Binding View, Converter={StaticResource MaterialDesignListViewTemplateConverter}, RelativeSource={RelativeSource Mode=Self}}"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
     </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -131,7 +150,7 @@
             </Grid.RowDefinitions>
             <TabControl Grid.RowSpan="2" Grid.ColumnSpan="4">
                 <TabItem Header="{DynamicResource Menu_Download}">
-                    <Grid Background="Gray">
+                    <Grid Background="White">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="139*" />
                             <ColumnDefinition Width="184*" />
@@ -159,7 +178,7 @@
                                     Stretch="Uniform" />
                             </Button.Background>
                         </Button>
-                        <ListView
+                        <ListView Style="{DynamicResource Mo}"
                             Name="DownloadList"
                             Grid.ColumnSpan="5"
                             Margin="9,10,10,10"
@@ -332,7 +351,7 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="{DynamicResource Menu_Recent}">
-                    <Grid Background="Gray">
+                    <Grid Background="White">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>

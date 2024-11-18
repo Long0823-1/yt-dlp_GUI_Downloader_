@@ -12,6 +12,8 @@
     MaxHeight="240"
     Closing="Window_Closing"
     WindowStyle="ToolWindow"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    Style="{StaticResource MaterialDesignWindow}"
     mc:Ignorable="d">
     <Window.Resources>
         <Style x:Key="FocusVisual">
@@ -136,6 +138,8 @@
             </Button>
             <ProgressBar
                 x:Name="prog"
+                Margin="10 0 10 0"
+                Height="45"
                 IsIndeterminate="True"
                 Visibility="Hidden" />
         </Grid>

@@ -4,14 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:yt_dlp_GUI_Downloader.yt_dlp"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="設定"
     Width="380"
-    Height="580"
+    Height="680"
     MinWidth="380"
-    MinHeight="580"
+    MinHeight="680"
     MaxWidth="380"
     MaxHeight="580"
+    Style="{StaticResource MaterialDesignWindow}"
     Topmost="True"
     mc:Ignorable="d">
     <Grid Margin="5">
@@ -62,7 +64,10 @@
             </ComboBox>
 
             <!--  YouTube-specific Options  -->
-            <CheckBox Margin="0,10,0,0" Name="DescriptionCheckBox" Content="{DynamicResource Settings_Choice_Gaiyoran}" />
+            <CheckBox
+                Name="DescriptionCheckBox"
+                Margin="0,10,0,0"
+                Content="{DynamicResource Settings_Choice_Gaiyoran}" />
             <CheckBox Name="CommentsCheckBox" Content="{DynamicResource Settings_Choice_Comment}" />
             <CheckBox x:Name="ThumbnailCheckBox" Content="{DynamicResource Settings_Choice_Thumbnail}" />
 
@@ -113,13 +118,19 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock
-                FontWeight="Bold"
-                Text="{DynamicResource Settings_Retry}" />
-                <TextBox Margin="10 0 0 0" x:Name="Retries" Text="100" Width="51" Height="19" />
+                    Height="16"
+                    FontWeight="Bold"
+                    Text="{DynamicResource Settings_Retry}" />
+                <TextBox
+                    x:Name="Retries"
+                    Width="51"
+                    Height="22"
+                    Margin="10,0,0,0"
+                    Text="100" />
             </StackPanel>
             <Button
                 Width="130"
-                Height="29"
+                Height="35"
                 Margin="5"
                 Click="Settings_Save_Button_Click"
                 Content="{DynamicResource Settings_Save}" />
