@@ -9,7 +9,10 @@
 [English version of the README is available here.](https://github.com/Long0823-1/yt-dlp_GUI_Downloader_/blob/master/README_EN.md)  
 
 ## 寄付
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G315YFUU)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G315YFUU)  
+## ダウンロード
+[![Download yt-dlp GUI Downloader](https://img.shields.io/badge/Download-yt--dlp_GUI_Downloader-blue?style=for-the-badge)](https://github.com/Long0823-1/yt-dlp_GUI_Downloader_/releases/download/v1.0.0.0/yt-dlp_GUI_Downloader.zip)
+
 
 ## 対応言語
 日本語以外は翻訳ツールを使用しています。

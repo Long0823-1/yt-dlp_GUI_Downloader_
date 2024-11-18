@@ -7,6 +7,10 @@
 ## 捐赠
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G315YFUU)
 
+## Download
+[![Download yt-dlp GUI Downloader](https://img.shields.io/badge/Download-yt--dlp_GUI_Downloader-blue?style=for-the-badge)](https://github.com/Long0823-1/yt-dlp_GUI_Downloader_/releases/download/v1.0.0.0/yt-dlp_GUI_Downloader.zip)
+
+
 ## 支持的语言
 除日语外，其他语言通过翻译工具生成。
 - 日语
