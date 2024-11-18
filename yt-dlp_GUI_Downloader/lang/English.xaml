@@ -36,4 +36,5 @@
     <sys:String x:Key="Settings_File_Choice">Select File</sys:String>
     <sys:String x:Key="Settings_Retry">Specify Retry Count</sys:String>
     <sys:String x:Key="Settings_Save">Save</sys:String>
+    <sys:String x:Key="Settings_Que">同時ダウンロード数</sys:String>
 </ResourceDictionary>

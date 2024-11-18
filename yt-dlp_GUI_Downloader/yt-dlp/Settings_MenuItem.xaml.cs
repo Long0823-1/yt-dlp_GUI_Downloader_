@@ -47,7 +47,7 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
                     UseCookiesCheckBox.IsChecked = SettingsClass.IsUseCookies;
                     VideoExtensionComboBox.SelectedIndex = SettingsClass.VideoExtension < 0 ? 0 : SettingsClass.VideoExtension;
                     Retries.Text = SettingsClass.Retries.ToString();
-
+                    Que.Text = SettingsClass.Que.ToString();
                     
                 }
             }
@@ -60,8 +60,10 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
             {
                 // -1の場合0にする
 
-                int result;
-                int.TryParse(Retries.Text, out result);
+                int retries;
+                int que;
+                int.TryParse(Retries.Text, out retries);
+                int.TryParse(Que.Text, out que);
 
                 Settings_Json_Save_Class json_Save_Class = new Settings_Json_Save_Class()
                 {
@@ -77,7 +79,8 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
                     IsGaiyoranSave = (bool)DescriptionCheckBox.IsChecked,
                     IsThumbnailSave = (bool)ThumbnailCheckBox.IsChecked,
                     IsUseCookies = (bool)UseCookiesCheckBox.IsChecked,
-                    Retries = result
+                    Retries = retries,
+                    Que= que
                 };
                 _vm.SettingsClass = json_Save_Class;
                 string jsonStr = JsonConvert.SerializeObject(json_Save_Class, Formatting.None);

@@ -24,6 +24,8 @@ namespace yt_dlp_GUI_Downloader.yt_dlp
         public bool IsUseDownloadPath {  get; set; } = false;
         public string DownloadPath { get; set; } = "";
         public int Retries { get; set; } = 100;
+        public int Que { get; set; } = 1;
+
         public bool IsPlaylist { get; set; } = false;
     }
 }
