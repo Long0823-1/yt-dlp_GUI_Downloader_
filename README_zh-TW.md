@@ -1,4 +1,4 @@
-# yt-dlp_GUI_Downloader
+# yt-dlp GUI Downloader
 
 ![截圖](https://github.com/user-attachments/assets/81864443-5459-438b-9524-06fc1f114abd)
 
